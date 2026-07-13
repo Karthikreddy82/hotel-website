@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Docker image...'
-                sh 'sudo docker build -t hotel-website .'
+                sh 'docker build -t hotel-website .'
             }
         }
 
@@ -25,10 +25,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                sudo docker stop hotel-container || true
-                sudo docker rm hotel-container || true
+                 docker stop hotel-container || true
+                 docker rm hotel-container || true
 
-                sudo docker run -d \
+                docker run -d \
                 --name hotel-container \
                 -p 8081:80 \
                 hotel-website
