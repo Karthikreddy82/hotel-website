@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Registration</title>
+
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Hotel Registration Form</h1>
+
+        <form id="registrationForm">
+
+            <label for="name">Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required>
+
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required>
+
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <div id="output" class="output">
+
+            <h2>Registration Details</h2>
+
+            <p>
+                <strong>Name:</strong>
+                <span id="displayName"></span>
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                <span id="displayEmail"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Link JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
