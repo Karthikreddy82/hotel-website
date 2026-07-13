@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -10,8 +11,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Building application...'
-                sh 'ls -la'
+                echo 'Building Docker image...'
+                sh 'sudo docker build -t hotel-website .'
             }
         }
 
@@ -23,17 +24,21 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                 sh '''
-                    sudo rm -rf /var/www/html/*
-                    sudo cp -r * /var/www/html/
-                    sudo systemctl restart nginx
+                sh '''
+                sudo docker stop hotel-container || true
+                sudo docker rm hotel-container || true
+
+                sudo docker run -d \
+                --name hotel-container \
+                -p 8081:80 \
+                hotel-website
                 '''
             }
         }
 
         stage('Verify') {
             steps {
-                sh 'curl http://localhost'
+                sh 'curl http://localhost:8081'
             }
         }
     }
