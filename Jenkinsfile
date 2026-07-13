@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "karthik56t/hotel-website"
+        IMAGE_TAG = "${BUILD_NUMBER}"
         CONTAINER_NAME = "hotel-container"
         PORT = "8081"
     }
