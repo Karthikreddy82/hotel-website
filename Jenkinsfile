@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building Docker image...'
-                sh 'sudo docker build -t hotel-website .'
+                sh 'docker build -t hotel-website .'
             }
         }
 
