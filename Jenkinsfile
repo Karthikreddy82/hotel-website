@@ -25,10 +25,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                sudo docker stop hotel-container || true
-                sudo docker rm hotel-container || true
+                 docker stop hotel-container || true
+                 docker rm hotel-container || true
 
-                sudo docker run -d \
+                docker run -d \
                 --name hotel-container \
                 -p 8081:80 \
                 hotel-website
